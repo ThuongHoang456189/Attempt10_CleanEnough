@@ -20,6 +20,7 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.VirtualFileSystem;
+using Fpt.Sras.Filters;
 
 namespace Fpt.Sras;
 
@@ -107,6 +108,7 @@ public class SrasHttpApiHostModule : AbpModule
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "Sras API", Version = "v1" });
                 options.DocInclusionPredicate((docName, description) => true);
                 options.CustomSchemaIds(type => type.FullName);
+                options.DocumentFilter<SwaggerFilter>();
             });
     }
 
